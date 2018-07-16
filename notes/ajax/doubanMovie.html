@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>doubanMovie</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		#wrapper{
+			margin: 100px auto;
+			width: 700px;
+			height: auto;
+		}
+		#wrapper a{
+			display: inline-block;
+			width: 115px;
+			height: 210px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<a href="#">
+			<div class="con">
+				<img src="" alt="">
+				<p>dd<span>8.0</span></p>
+			</div>
+		</a>
+		<a href="#">
+			<div class="con">
+				<img src="" alt="">
+				<p>dd<span>8.0</span></p>
+			</div>
+		</a>
+	</div>
+	<script>
+		var wrap = document.getElementById('wrapper');
+		var oScript = document.createElement('script');
+		oScript.src = 'https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&page_limit=50&page_start=0';
+		wrap.appendChild(oScript);
+
+		function getMovie(data) {
+			
+		}
+	</script>
+</body>
+</html>

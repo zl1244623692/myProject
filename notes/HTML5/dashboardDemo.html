@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		svg{
+			border: 1px solid #333;
+		}
+		path{
+			fill: transparent;
+			stroke-width: 10px;
+			stroke-linecap: round;
+		}
+		#path1{
+			stroke: #ccc;
+		}
+		#path2{
+			stroke: #75B14D;
+			stroke-dasharray: 1000px;
+			stroke-dashoffset: 1000px;
+
+		}
+		.active{
+			transition: all 1s linear;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="btn">
+	<svg width=500 height=500>
+		<path  id='path1' d='M 200 300 A 100 100 0 1 1 300 300'></path>
+		<path  id='path2' d='M 200 300 A 100 100 0 1 1 300 300'></path>
+	</svg>
+
+	<script>
+		//实现百分比
+		var len = path2.getTotalLength();
+		// console.log(len);
+		var oBtn = document.getElementById('btn');
+		oBtn.onblur = function() {
+			var value = this.value;
+			var total = len * value / 100;
+			path2.classList.add('active');
+			path2.style.strokeDashoffset = 1000 - total + 'px';
+		}
+		oBtn.onfocus = function() {
+			path2.classList.remove('active');
+			path2.style.strokeDashoffset = '1000px';
+		}
+	</script>
+</body>
+</html>

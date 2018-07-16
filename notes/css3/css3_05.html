@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta >
+	<title>响应式布局</title>
+</head>
+<body>
+	<script>
+		//媒体查询的发展
+			css2 media type 媒体类型
+			css3 media query（media type + css） 媒体特性
+		//媒体查询的引用方式
+			link引用
+				<link rel="stylesheet" media="screen and (max-width: 800px)" href="index.css">
+
+			@import
+
+			在css3中使用@media
+				@media (max-width: 800px) {
+					div{
+						width: 100px;
+						height: 100px;
+						background: red;
+					}
+				}
+
+				@media screen and (max-width: 800px) and (min-width: 600px) {
+					div{
+						width: 100px;
+						height: 100px;
+						background: red;
+					}
+				}
+
+		//媒体查询中的逻辑操作符
+			and  //类型和属性合并，属性和属性合并
+				@media (max-width: 800px) {}
+				@media screen and (max-width: 800px) and (min-width: 600px) {}
+
+			,  //属性1或者属性2
+				@media screen and (max-width: 800px), print and (max-width: 800px){}
+
+			not //否定
+				@media not screen and (max-width: 800px) {}
+
+
+		//宽度的区别
+			device-width/height //设备的width/height 设备出厂是就确定了
+
+			width/height //渲染区的width/height 时刻在变化
+
+		//物理像素和设备独立像素
+			dpr = 物理像素/设备独立像素(1/1; 视网膜屏：2/1)
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		canvas
+			//canvas 的应用场景
+				1.游戏
+				2.图表
+				3.动画
+				4.codepen.io(HTML5动画特效)
+
+			//canvas 的发展史
+				最早在apple safari 1.3中应用
+				IE9之前的浏览器不支持
+				www.caniuse.com(查看浏览器的支持情况)
+
+			//canvas 的使用
+				添加canvas标签
+					<canvas width=500 height=500></canvas>
+				获取canvas元素
+					var oCanvas = document.getElementById('canvas');
+				获取canvas上下文对象(获取画笔)
+					var ctx = oCanvas.getContext('2d');
+
+
+				//画一个三角形
+					//画笔的起始点(x, y)
+					ctx.moveTo(100, 100);
+					//画笔绘制直线到(x, y)
+					ctx.lineTo(200, 100);
+					ctx.lineTo(200, 200);
+					//设置线段的宽度
+					ctx.lineWidth = 5;
+					//闭合当前路径(并没有回到起始点)
+					ctx.closePath();
+					//描边的颜色
+					ctx.strokeStyle = 'red';
+					//画笔 描边 绘制
+					ctx.stroke();
+
+					开启一个新路径
+					ctx.beginPath();
+					ctx.moveTo(300, 100);
+					ctx.lineTo(400, 100);
+					ctx.lineTo(400, 200);
+					ctx.closePath();
+					ctx.strokeStyle = 'green';
+					ctx.lineWidth = 5;
+					ctx.stroke();
+
+				//矩形属性
+					//起始点x, y
+					ctx.rect(x, y, dx, dy); 
+					ctx.fillRect(x, y, dx, dy);
+					ctx.strokeRect(x, y, dx, dy);
+					//清除区域画板
+					ctx.clearRect(x, y, dx, dy);
+				
+
+
+				//弧形
+				1.arc(x, y, r, 起始弧度, 结束弧度, 弧形的方向); //false/0 -> 顺时针; true/1 -> 逆时针;
+				2.角以弧度计算
+				ctx.arc(250, 250, 100, 0, Math.PI/2, 0); //向下90deg
+				ctx.arc(250, 250, 100, 0, Math.PI*2, 0); //360deg
+				ctx.arc(250, 250, 100, 0, Math.PI, 0);  //向下180deg
+				ctx.arc(250, 250, 100, 0, Math.PI/180 *360, 0); //想要多少deg, Math.PI/180 * Ndeg
+
+				//圆角
+				ctx.arcTo(x1, y1, x2, y2, r);
+
+				
+				ctx.translate(x, y); //平移整个画布
+
+
+
+
+	</script>
+</body>
+</html>

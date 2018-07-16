@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		svg{
+			background: #cecece;
+		}
+		rect{
+			fill: transparent;
+			stroke: black;
+			stroke-width: 3px;
+		}
+		#circle1,#circle2{
+			fill: transparent;
+			stroke: black;
+			stroke-width: 3px;
+		}
+		polyline{
+			fill: transparent;
+			stroke: black;
+			stroke-width: 3px;
+		}
+		ellipse{
+			fill: transparent;
+			stroke: black;
+			stroke-width: 3px;
+		}
+
+	</style>
+</head>
+<body>
+	<svg width=600 height=600>
+		<rect x='100' y ='100' width='400' height='400' rx='40' ry='40'></rect>
+		<polygon points='150 100 190 60 250 100 300 60 350 100 400 60 440 100'></polygon>
+		<circle r='35' cx='200' cy='230' id='circle1'></circle>
+		<circle r='35' cx='400' cy='230' id='circle2'></circle>
+		<circle r='10' cx='210' cy='240' id='circle3'></circle>
+		<circle r='10' cx='410' cy='240' id='circle4'></circle>
+		<polyline points='300 280 310 330 290 330 300 280'></polyline>
+		<ellipse rx='60' ry='30' cx='300' cy='390'></ellipse>
+	</svg>
+</body>
+</html>

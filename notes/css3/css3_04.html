@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex弹性盒子优雅布局</title>
+	<style>
+	/* 弹性盒子布局 */
+		body{
+			font-size: 0;
+		}
+		.wrapper{
+
+			display: flex;
+
+			width: 500px;
+			height: 500px;
+			border: 1px solid #333;
+		}
+		.item{
+	
+			flex-grow: 1;
+
+			width: 50px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			border: 1px solid #000;
+			box-sizing: border-box;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+	</div>
+	<script>
+		/*//columns 多列布局（报纸布局）
+			//下面两个属性最好只使用一个
+			columns-width : 160px;（>=） //列宽 width = width-((n - 1)*font-size)/n
+			columns-count : 3; //几列
+			columns-gap : 16; //列宽（根据font-size决定）
+			columns-rule : 1px solid #000; 
+
+			columns-span : all; //标题的样式
+
+		//盒模型
+			w3c标准盒模型
+
+				width(内容高度) = width
+
+			IE6混杂盒模型
+				触发：
+
+
+				width(内容高度) = width + padding + border
+
+				渲染模式：
+					//可以给行级元素设置宽高
+					//margin: 0 auto;无效
+					//img的padding值失效
+				
+				box-sizing: border-box（IE6混杂盒模型）/content-box(w3c标准盒模型)
+
+
+		//弹性盒子 display:flex  （设置在父元素上）
+			flex-grow: 1; //(放大比列 ) 设置在子元素上
+			
+		*/
+	</script>
+</body>
+</html>

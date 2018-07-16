@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script>
+		//SVG 一个一个标签生成的比较简单的图形
+		//SVG应用场景
+			/*1.图表(简单些的)
+			2.icon图标
+			3.动效
+			4.矢量图(canvas生成位图)*/
+		//SVG的使用
+			/*其他所有的标签都被最外面标签SVG包裹
+			样式直接在css中的实现*/
+
+			/*<svg width=500 height=500></svg>*/
+
+			/*直线 x1,y1起始点坐标; x2,y2终点坐标
+				line{
+					stroke: red; 描边红色
+				}
+				<line x1='100' y1='100' x2=300 y2=100></line>*/
+
+			/*矩形 x,y起始点坐标; rx,ry:x轴圆角 y轴圆角 默认填充黑色
+				rect{
+					fill: transparent; //填充色透明
+					stroke: blue; //描边蓝色
+				}
+				<rect x='50' y='50' width='200' height='100' rx='10' ry='10'></rect>*/
+
+			/*圆形 r:半径; cx,cy:中心点坐标
+				circle{
+					fill: orange; //填充颜色
+
+					fill: transparent; //填充色透明
+					stroke: orange; //描边颜色
+					stroke-width: 5px; //描边宽度
+				}
+				<circle r='50' cx='200' cy='200'></circle>*/
+
+			/*椭圆 rx,ry:x轴半径,y轴半径; cx,cy:中心点坐标
+				ellipse{
+					fill: orange; //填充颜色
+				}
+				<ellipse rx='100' ry='50' cx='300' cy='200'></ellipse>*/
+			/*折线 points:折点的集合
+				polyline{
+					// 默认有填充色
+					fill: transparent;
+					stroke: red;
+					stroke-opacity: 0.6; //描边的透明度
+				}
+				<polyline points='60 50, 75 35, 100 50, 125 35, 150 50'></polyline>*/
+
+			/*多边形 points:多边形拐点的集合
+				polygon{
+					//默认图形是封闭的
+					fill: orange;
+					fill-opacity: 0.3; //填充染色的透明度
+				}
+				<polygon points='60 50, 75 35, 100 50, 125 35, 150 50'></polygon>*/
+
+			/*文字 x,y:文字起始坐标
+				<text x='125' y='220'>Hello,world</text>*/
+
+		//样式的属性
+			/*stroke: blue; //描边蓝色
+			fill: orange; //填充颜色
+			stroke-width: 5px; //描边宽度
+			fill-opacity: 0.3 //填充染色的透明度;
+			stroke-opacity: 0.6; //描边的透明度
+
+			stroke-linecap:butt/round/square //线段两端的样式
+			stroke-linejoin: bevel/round/miter //折线折点的样式*/
+
+
+		//path元素
+			1.M指令和L指令  //M:相当于 moveTo,起始点坐标； L相当于lineTo, 结束点的坐标
+				//M,L绝对坐标； m,l相对坐标
+					
+				//H指令和V指令 H：水平方向上多少； V:垂直方向上多少(和M,L一样，区分大小写)
+
+				// z/Z指令 相当于closePath闭合路径
+				 
+					<path d='M 100 100 L 300 100 300 300 100 100'></path>
+		
+			//圆弧指令
+				M:x,y起始点的坐标
+				//A指令的参数
+				rx,ry:圆弧的x轴半径和y轴半径
+				x-axis-rotation: 圆弧相对于x轴的旋转角度，默认是顺时针
+				large-arc-flag: 表示圆弧的路径是大圆弧还是小圆弧， 1：大圆弧； 0：小圆弧
+				sweep-flag: 从起点到终点是顺时针还是逆时针； 1：顺时针； 0：逆时针；
+				x,y表示终点的坐标，绝对或者相对(看A指令是大写还是小写)；
+
+				<path d='M 100 100 A 50 90 0 1 1 150 200'></path>
+
+			//贝塞尔曲线
+				//二次贝塞尔曲线
+				Q x1 y1, x y
+				T x y (延伸)
+				//三次贝塞尔曲线
+				C x1 y1, x2 y2, x y
+				S x2 y2, x y (延伸)
+
+
+
+				//自动生成路径
+				地址：
+					http://editor.method.ac/
+
+
+
+
+
+		//SVG渐变
+			/*1.线性渐变
+				<defs>
+					<linearGradient id='bg1' x1='0' y1='0' x2='0' y2='100%'>
+						<stop offset='0%' style='stop-color:rgb(255 255 0);'/>
+						<stop offset='100%' style='stop-color:rgb(255 0 0);'/>
+					</linearGradient>
+				</defs>
+				<rect x='0' y='0' width='500' height='500' style='fill:url(#bg1)'></rect>
+
+			2.径向渐变
+				<defs>
+					<radialGradient id='bg2' cx='50%' cy='50%' r='50%' fx='50%' fy='50%'>
+						<stop offset='0%' style='stop-color:green;'/>
+						<stop offset='100%' style='stop-color:red;'/>
+					</radialGradient>
+				</defs>
+				<rect x='0' y='0' width='500' height='500' style='fill:url(#bg2)'></rect>*/
+
+		//SVG滤镜
+			//高斯滤镜
+				/*<defs>
+					<filter id='bg3'>
+						<feGaussianBlur in='SourceGraphic' stdDeviation='20'/>	
+					</filter>
+				</defs>
+				<rect x='0' y='0' width='500' height='500' style='fill:url(#bg3)'></rect>*/
+
+
+		SVG路径动画
+			stroke-dasharray: 20px 30px; //可以有多个属性值,在使用的过程中属性值是循环的
+			stroke-dashoffset: 10px; //正值:向左缩进; 负值:向右缩进;
+
+			1.getTotalLength  //获取路径的总长度
+			2.getPointAtLength //获取路径上距离起始点距离x长度的点的坐标
+
+
+		ViewBox
+			<svg width=500 height=500 viewBox='0,0,40,30'></svg>
+			preserveAspectRatio
+				xMin xMid xMax -> x轴 左中右对齐
+				yMin yMid yMax -> y轴 上中下对齐
+				meet slice none -> 设置填充方式
+
+
+		//JS生成SVG元素
+			1.创建SVG元素需要指定命名空间
+			2.SVG元素对象一般通过调用setAttribute()方法来设定属性值
+
+			var char = 'http://www.w3.org/2000/svg',
+				svg = document.createElementNS(char, 'svg');
+
+			svg.setAtTribute('width', 500);
+			svg.setAtTribute('height', 500);
+
+			document.body.appendChild(svg);
+</script>
+</body>
+</html>

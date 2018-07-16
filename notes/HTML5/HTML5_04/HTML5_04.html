@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//geolocaltion 获取地理位置信息
+		
+			window.navigator.geolocaltion
+				geolocaltion对象的属性：
+					latitude 纬度
+					longitude 经度
+					altitude 海拔
+					accuracy 定位精准度，单位m
+					altitudeAccuracy 海拔精准度，单位m
+					heading 方向
+					speed 速度
+				1. getCurrentPosition(s, e, p) //获取当前的地理位置
+					s : success回调(必须)
+					e : error回调
+						positionError:
+							code : 1; //用户拒绝
+							code : 2； //获取不到(比如: 没有翻墙)
+							code : 3； //连接超时(8s)
+					p : options参数 
+						1.enableHighAccuracy //是否需要高精度位置 默认false
+						2.timeout //单位ms 请求超时时间 默认infinity
+						3.maximumAge //单位ms, watchPosition方法则不停地取用户的地理位置信息，不停地更新用户的位置信息
+					//必须翻墙使用(搬瓦工)
+
+				2.watchPosition //监视位置变化
+					var id = geolocation.watchPosition(fu) 用于注册监听器，在设备的地理位置发生改变的时候自动被调用。
+						//参数与 getCurrentPosition 相同
+					
+					clearWatch(id) 使用 clearWatch 清除监听
+
+
+
+		//devicemotion 监听加速度变化
+			window.addEventListener('devicemotion', function(event){
+		       console.log(event);
+			});
+
+			//devicemotion的属性值：
+				1.accelerationIncludingGravity （包括重心引力,z轴方向加了9.8,在x,y方向上的值两者相同）重力加速度
+				2.acceleration 重力加速度
+				（需要陀螺仪支持）
+				3.rotationRate(alpha, beta, gamma)旋转速率
+				4.interval // 获取的时间间隔
+				均为只读属性
+
+			//怎样使用的小demo
+				<div id='item'></div>
+				window.addEventListener('devicemotion', function(e){
+					item.innerHTML = e.accelerationIncludingGravity.x + '-' + 
+									e.accelerationIncludingGravity.y + '-' +
+									e.accelerationIncludingGravity.z;
+				})
+		
+
+		//deviceorientation监听设备在方向上的变化
+			window.addEventListener(deviceorientation, function(event){
+		       console.log(event);
+			});
+
+			deviceorientation的属性值:
+				1.alpha 表示设备沿z轴上的旋转角度，范围为0~360
+				2.beta 表示设备在x轴上的旋转角度，范围为-180~180
+				3.gamma 表示设备在y轴上的旋转角度，范围为-90~90
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

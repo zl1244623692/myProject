@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css3_05demo.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			font-size: 0;
+		}
+		.wrapper{
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.wrapper div{
+			width: 20%;
+			display: inline-block;
+			flex-grow: 1;
+		}
+		.wrapper div img{
+			width: 100%;
+		}
+		@media screen and (max-width: 1000px) {
+			.wrapper div{
+				width: 25%;
+			}
+		}
+		@media screen and (max-width: 800px) {
+			.wrapper div{
+				width: 33.33%;
+			}
+		}
+		@media screen and (max-width: 600px) {
+			.wrapper div{
+				width: 50%;
+			}
+		}
+		@media screen and (max-width: 400px) {
+			.wrapper div{
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div><img src="img/01 (1).png" alt=""></div>
+		<div><img src="img/01 (2).png" alt=""></div>
+		<div><img src="img/01 (3).png" alt=""></div>
+		<div><img src="img/01 (4).png" alt=""></div>
+		<div><img src="img/01 (5).png" alt=""></div>
+		<div><img src="img/01 (6).png" alt=""></div>
+		<div><img src="img/01 (7).png" alt=""></div>
+		<div><img src="img/01 (8).png" alt=""></div>
+		<div><img src="img/01 (9).png" alt=""></div>
+		<div><img src="img/01 (10).png" alt=""></div>
+		<div><img src="img/01 (11).png" alt=""></div>
+		<div><img src="img/01 (12).png" alt=""></div>
+		<div><img src="img/01 (13).png" alt=""></div>
+	</div>
+</body>
+</html>

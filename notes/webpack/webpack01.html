@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>前端模块化</title>
+</head>
+<body>
+	<script>
+		//模块化开发 不同的功能写在不同的函数中
+			特点：独立，完整，依赖关系
+			规范：CommonJs, AMD;
+
+		//常见的模块化
+			//1.函数
+				function add(a, b) {
+					return a + b;
+				}
+				function a(a) {
+					console.log(a);
+				}
+			//2.对象
+				var ppt = {
+					len: 3,
+					init: function() {
+
+					},
+					createDom: function() {
+
+					}
+				}
+
+			//3.匿名函数 返回对象
+				var obj = (function() {
+					var len = 3;
+					function add(a, b) {
+						return a + b;
+					}
+					return {
+						add: add
+					}
+				})();
+
+				console.log(obj.add(1, 2));
+
+			//注入依赖
+				(function(a, b) {
+					//模块化的东西
+					b(a);
+				})(window, function(window) {
+					window.jQuery = jQuery;
+
+					function jQuery() {
+
+					}
+				})
+
+		//CommonJs 服务器端规范 同步加载适用于服务器端, 不适用浏览器端
+			//node.js
+			//每一个文件就是一个模块，内部的变量只属于这一个模块，不会对外暴露，不会污染全局变量；
+			
+			/*核心思想: 通过require方法 "同步加载" 所要依赖的其他模块，
+					  通过exports或者module.exports导出所要暴露的接口*/   
+
+			/*浏览器不兼容commonJs, 
+					原因：浏览器缺少module, exports, require, global四个环境变量；如要使用需要工具转换*/
+
+			
+			//index.js
+			var module = require('module.js');
+			module.aa('hello');
+
+			//module.js
+			module.exports = {
+				aa: function(str) {
+					console.log(str);
+				}
+			}
+
+		//AMD 浏览器端规范 异步加载模块，允许指定回调函数; 等模块异步加载完成后即可调用回调函数
+			//require.js
+			
+			//核心思想: 通过define来定义一个模块, 然后使用require来加载一个模块.
+			
+			//math.js
+			require(['jquery', 'math'], function($, math) {
+				//do soming;
+			})
+
+			//math.js
+			define(function() {
+				//do soming;
+			})
+
+	</script>
+</body>
+</html>

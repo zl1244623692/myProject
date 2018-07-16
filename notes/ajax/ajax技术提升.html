@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// cors -- 跨域资源共享
+
+		//当你在地址栏中，输入地址点击回车。这个过程发成了什么？
+		//
+		
+		// jsonp
+			//json与jsonp的区别？
+			
+		//jsonp跨域原理 
+			//src属性不受同源策略的影响，原理是利用script的src属性 ,动态的创建script标签
+			
+			// var url = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=a&cb=fn';
+
+			//原生创建script标签
+			/*function addScript() {
+				var oScript = document.createElement('script');
+				oScript.setAttribute('type', 'text/javascript');
+				oScript.src = url;
+				document.body.appendChild(oScript);
+			}
+			
+			window.onload = function() {
+				addScript();
+			}
+
+			//成功之后的回调
+			function fn(data){
+				console.log(data);
+			}*/
+
+
+			//解析jquery里的ajax的jsonp
+			var $ = {
+				ajax : function(param) {
+					if(param.dataType == 'jsonp') {
+						// var isOrigin = true/false; 假设一个同源的值
+						var isOrigin = true;
+						//判断是否同源
+							//window.location.hos:拿请求地址的域名
+							//url.split('')[2]：拿我们本地服务器的域名
+
+						if(window.location.host == url.split('/')[2]) {
+							isOrigin = true;
+						}else {
+							isOrigin = false;
+						}
+						
+						if(isOrigin) {
+							//同源
+							var ajax = new new XMLHttpRequest();
+							ajax.open(param.type,param.url);
+							ajax.send(param.data);
+							ajax.onreadystatechange = function() {
+								if(ajax.readyState == 4 && ajax.status == 200) {
+									param.success(ajax.responseText);
+								}
+							}
+
+						}else {
+							//不同源
+							window.fn = param.success;
+							var oScript = document.createElement('script');
+							oScript.setAttribute('type', 'text/javascript');
+							oScript.src = url;
+							document.body.appendChild(oScript);
+						}
+					}
+				}
+			}
+
+			var url = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=a&cb=fn';
+			var param = {
+				type : 'GET',
+				url : url,
+				data : 'wd=a&cb=fn',
+				dataType : 'jsonp',
+				success : function(data) {
+					console.log(data);
+				},
+				error : function() {
+					console.log('error');
+				}
+
+			}
+
+			$.ajax(param)
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas绘图</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+		<canvas width=500 height=700 id="canvas1"></canvas>
+
+		<script>	
+				//获取画布
+				var oCanvas = document.getElementById('canvas1');
+				//获取画笔
+				var ctx = oCanvas.getContext('2d');
+
+				//画三角
+				/*//画笔的起始点(x, y)
+				ctx.moveTo(100, 100);
+				//画笔绘制直线到(x, y)
+				ctx.lineTo(200, 100);
+				ctx.lineTo(200, 200);
+				//设置线段的宽度
+				ctx.lineWidth = 5;
+				//闭合当前路径(并没有回到起始点)
+				ctx.closePath();
+				//描边的颜色
+				ctx.strokeStyle = 'red';
+				//画笔 描边 绘制
+				ctx.stroke();
+				//填充
+				// ctx.fill();
+
+				ctx.beginPath();
+				ctx.moveTo(300, 100);
+				ctx.lineTo(400, 100);
+				ctx.lineTo(400, 200);
+				ctx.closePath();
+				ctx.strokeStyle = 'green';
+				ctx.lineWidth = 5;
+				ctx.stroke();*/
+
+				//画一个矩形
+				/*var y = 100;
+				//绘制一个y为参数的矩形函数
+				function drawRect(y) {
+					ctx.fillRect(100, y, 50, 50);
+				}
+
+				var timer = setInterval(function(){
+					ctx.clearRect(0, 0, 500, 500);  //擦除上一次绘制的矩形
+					drawRect(y); //隔段时间执行一次矩形函数
+					y += 10;  //y的值不断增加
+					if(y > 450) {   //当高度到一定的值时
+						clearInterval(timer);  //清除定时器
+						drawRect(450); // >450时，超了一点给拉回来；
+					}
+				},50)*/
+
+
+				//画一个圆弧
+				// ctx.arc(250, 250, 100, 0, Math.PI/2, 0);
+				// ctx.arc(250, 250, 100, 0, Math.PI*2, 0);
+				// ctx.arc(250, 250, 100, 0, Math.PI, 0); 
+				// ctx.arc(250, 250, 100, 0, Math.PI/180 *360, 0); 
+				// ctx.stroke();
+				
+				/*ctx.moveTo(250, 250);
+				ctx.lineTo(350, 250);
+				ctx.arc(250, 250, 100, 0, -Math.PI/180*60, 1);
+				ctx.closePath();
+				ctx.stroke();*/
+
+				/*ctx.moveTo(250, 250);
+				ctx.lineTo(350, 250);
+				ctx.arc(250, 250, 100, 0, -Math.PI/180*60, 0);
+				ctx.closePath();
+				ctx.stroke();*/
+
+				//画一个圆角
+				/*ctx.moveTo(250, 250);
+				ctx.arcTo(350, 250, 350, 350, 30);
+				ctx.stroke();*/
+
+				//画一个圆角矩形
+				/*ctx.beginPath();
+				ctx.moveTo(150, 150);
+				ctx.arcTo(250, 150, 250, 350, 30);
+				ctx.arcTo(250, 350, 50, 350, 30);
+				ctx.arcTo(50, 350, 50, 50, 30);
+				ctx.arcTo(50, 50, 250, 400, 30);
+				ctx.closePath();
+				ctx.stroke();
+*/
+				
+		</script>
+</body>
+</html>

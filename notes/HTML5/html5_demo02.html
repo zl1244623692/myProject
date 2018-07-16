@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		svg{
+			border:  1px solid #000;
+		}
+		line{
+			/* 描边颜色 */
+			stroke: red; 
+		}
+		rect{
+			/* fill: transparent; */
+			fill: blue;
+			stroke: blue;
+		}
+		circle{
+			/* fill: orange; */
+
+			fill: transparent;
+			stroke: orange;
+			stroke-width: 5px;
+		}
+		ellipse{
+			fill: orange;
+		}
+		polyline{
+			fill: transparent;
+			stroke: red;
+			stroke-width: 20px;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			/* stroke-opacity: 0.6; */
+		}
+		polygon{
+			fill: orange;
+			fill-opacity: 0.3;
+		}
+
+
+
+		/* #svgAnimate{
+			stroke: green;
+			stroke-width: 3px;
+			fill: transparent;
+			可以有多个参数
+			stroke-dasharray: 20px;
+			stroke-dasharray: 500px;
+			stroke-dashoffset: 0px;
+			animation: move 1s linear alternate infinite;
+		}
+		
+		@keyframes move{
+			0%{
+				stroke-dashoffset: 10px;
+			}
+		
+			100%{
+				stroke-dashoffset: 500px;
+			}
+		}
+		 */
+
+	</style>
+</head>
+<body>
+	<!--<svg width=500 height=500>
+		 <line x1='100' y1='100' x2=300 y2=100></line> -->
+		<!-- <rect x='50' y='50' width='200' height='100' rx='10' ry='10'></rect> -->
+		<!-- <circle r='50' cx='200' cy='200'></circle> -->
+		<!-- <ellipse rx='100' ry='50' cx='300' cy='200'></ellipse> -->
+		<!-- <polyline points='60 50, 75 35, 100 50, 125 35, 150 50'></polyline>	 -->
+		<!-- <polygon points='60 50, 75 35, 100 50, 125 35, 150 50'></polygon> -->
+		<!-- <text x='125' y='220'>Hello,world</text> -->
+
+		<!-- <polyline points='100 200, 200 100, 300 100'></polyline>	 -->
+
+		<!-- path元素 -->
+
+		<!-- <path d='M 100 100 L 300 100 300 300 100 100'></path> 下面可以实现一样的图形-->
+		<!-- <path d='M 100 100 H 200 V 200 Z'></path>   -->
+
+		<!-- 圆弧指令 -->
+		<!-- <path d='M 100 100 A 50 90 0 1 1 150 200'></path> 
+		 <path id="svg_2" d="m179.33248,156.28447l62.64288,0l19.35713,-61.11473l19.35714,61.11473l62.64286,0l-50.67906,37.77055l19.35813,61.11473l-50.67908,-37.77157l-50.67907,37.77157l19.35814,-61.11473l-50.67907,-37.77055z" stroke-width="1.5" stroke="#ffffff" fill="yellow"/>-->
+
+
+
+
+		<!-- SVG渐变 -->
+
+		<!-- 线性渐变
+			<defs>
+				<linearGradient id='bg1' x1='0' y1='0' x2='0' y2='100%'>
+					<stop offset='0%' style='stop-color:rgb(255 255 0);'/>
+					<stop offset='100%' style='stop-color:rgb(255 0 0);'/>
+				</linearGradient>
+			</defs>
+			<rect x='0' y='0' width='500' height='500' style='fill:url(#bg1)'></rect> -->
+		
+		<!-- 径向渐变 
+			<defs>
+				<radialGradient id='bg2' cx='50%' cy='50%' r='50%' fx='50%' fy='50%'>
+					<stop offset='0%' style='stop-color:rgb(255 255 0);'/>
+					<stop offset='100%' style='stop-color:rgb(255 0 0);'/>
+				</radialGradient>
+			</defs>
+			<rect x='0' y='0' width='500' height='500' style='fill:url(#bg2)'></rect>-->
+
+
+		<!-- 高斯滤镜
+		<defs>
+			<filter id='bg3'>
+				<feGaussianBlur in='SourceGraphic' stdDeviation='20'/>	
+			</filter>
+		</defs>
+		<rect x='0' y='0' width='500' height='500'  style='filter:url(#bg3)'></rect> -->
+
+		
+		<!-- <path d='M 0 100 L 500 100' id='svgAnimate'></path> 
+
+		<svg width=500 height=500 viewBox='0,0,40,30'></svg>
+
+	</svg>-->
+
+
+
+	<!-- JS生成SVG元素 -->
+	<script>
+		var char = 'http://www.w3.org/2000/svg',
+			svg = document.createElementNS(char, 'svg');
+
+		svg.setAttribute('width', 500);
+		svg.setAttribute('height', 500);
+
+		document.body.appendChild(svg);
+	</script>
+</body>
+</html>

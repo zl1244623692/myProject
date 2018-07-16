@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>arr01</title>
+</head>
+<body>
+	<script>
+	//数组的扩展方法
+		// var arr = [3,5,8,10];
+
+		// 筛选：some/every
+		/*arr.some(function(ele) {
+			if(ele > 4) {
+				reutrn true;
+			}
+		})
+		arr.every(function(ele){
+			if(ele < 6){
+				reutrn true;
+			}
+		})*/
+
+		//索引: indexOf/lastIndexOf
+		
+
+		//遍历：for/forEach
+			/*var arr = [
+				{name:'lala',age:'12',like:'dog'},
+				{name:'mimi',age:'25',like:'fish'},
+				{name:'xixi',age:'23',like:'cat'},
+				{name:'haha',age:'48',like:'gulugulu'},
+				{name:'hehe',age:'4',like:'guagua'}
+			]*/
+
+		//for循环
+			/*for(var i = 0; i < arr.length; i ++) {
+				console.log(arr[i], i);
+			}*/
+
+			//forEach遍历
+			/*arr.forEach(function(ele,index) {
+				console.log(ele,index);
+				console.log(ele.name + ' like: '+ ele.like);
+			})*/
+
+		//原型写法
+			/*Array.prototype.myForEach = function(fn) {
+				var len = this.length;
+				for(var i = 0; i < len; i ++) {
+					fn(this[i],i,this);
+				}
+			}
+
+			arr.myForEach(function(ele,index) {
+				console.log(ele,index,arr2);
+			})*/
+
+		//过滤 filter
+			/*var fArr = arr.filter(function(ele,index){
+				if(ele.age > 14) {
+					return true;
+				}
+			})
+
+			console.log(fArr,arr);*/
+
+		//原型的写法
+			/*Array.prototype.myFliter = function(fn){
+				var newArr = [];
+				for(var i = 0; i < this.length; i ++) {
+					if(fn(this[i],i)) {
+						if(typeof this[i] == 'object') {
+							//有bug
+							newArr.push(deepClone(this[i],{}));
+						}else {
+							newArr.push(this[i]);
+						}
+					}
+				}
+				return newArr;
+			}
+
+			var myArr = arr.myFliter(function(ele,index) {
+				if(ele.age < 14) {
+					return true;
+				}
+			})
+
+			console.log(myArr);
+			arr[0].name = 'abcd';
+			console.log(myArr);*/
+
+
+			//深度克隆
+				//1.遍历对象（for in）、 判断是不是原始值 是就直接拷贝 typeof() object
+				//2、是引用值，判断是数组还是对象 instanceof toString constructor
+				//3、建立相应的数组和对象
+				//4、递归
+				/*var obj = {
+					name : 'sdfjg',
+					age : 12,
+					card : ['card01','card02'],
+					wife : {
+						name : 'lili',
+						son : {
+							name : 'langlang'
+						}
+					}
+				}	
+
+				var obj1 = {
+				}
+					
+				function deepClone(origin,target) {
+					//容个错
+					var target = target || {},
+						toStr = Object.prototype.toString,
+						arrStr ='[object Arrar]';
+
+					for(var prop in origin) {
+						//用for in 最好在判断一下
+						if(origin.hasOwnProperty(prop)) { 
+							//判断是不是引用值
+							if(origin[prop] !== 'null' && typeof(origin[prop]) == 'object') {
+								//判断是数组还是对象
+								if(toStr.call(origin[prop]) == arrStr) {
+									target[prop] = [];
+								}else {
+									target[prop] = {};
+								}
+
+								deepClone(origin[prop],target[prop]);
+
+							}else {
+								target[prop] = origin[prop];
+							}
+						}
+					}
+
+					//如果没有传target 就return出去
+					return target;
+
+				}
+			
+				 console.log(deepClone(obj,obj1));*/
+
+
+
+
+
+		//map方法
+			/*var d = arr.map(function(ele,index){
+				return +ele.age + 10;
+			})
+
+			console.log(d,arr);*/
+
+		//原型写法
+			/*Array.prototype.myMap = function(fn) {
+				var len = this.length;
+				var newArr = [];
+				for(var i = 0; i < len; i ++) {
+					newArr.push(fn(this[i],i));
+				}
+				return newArr;
+			}
+
+			var newArr = arr.myMap(function(ele,index) {
+				return +ele.age + 10;
+			})
+
+			console.log(newArr,arr);*/
+		
+
+
+
+		//reduce(从左到右计算)/reduceRight（从右向左计算）
+		/*var arr = [1,2,4,5];	
+
+		var newArr = arr.reduce(function(prev,cur,curIndex,arr) {
+			// return prev + cur;
+			return prev +  '-' + cur;
+		},10)
+
+		console.log(newArr);
+
+		//封装reduce
+		Array.prototype.myReduce = function(fn,init) {
+			var prev = init;
+			var i = 0;
+			var len = this.length;
+			if(init == undefined){
+				prev = this[0];
+				i = 1;
+			}
+
+			for(i; i < len; i ++) {
+				prev = fn(prev,this[i],i);
+			}
+
+			return prev;
+		}
+
+		var newArr = arr.myReduce(function(prev,cur,curIndex,arr) {
+			return prev + cur;
+		},10)
+
+		console.log(newArr);*/
+	</script>
+</body>
+</html>

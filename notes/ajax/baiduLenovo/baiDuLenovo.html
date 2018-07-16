@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度联想词</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.wrapper{
+			width: 400px;
+			height: 34px;
+			margin: 100px;
+		}
+		input{
+			width: 400px;
+			height: 34px;
+			border: 1px solid #ccc;
+			outline: none;
+		}
+		ul{
+			width: 400px;
+			border: 1px solid #ccc;
+			display: none;
+		}
+		ul li{
+			height: 32px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<input type="text">
+		<ul></ul>
+	</div>
+
+	<script>
+		var oInput = document.getElementsByTagName('input')[0];
+		var oUl = document.getElementsByTagName('ul')[0];
+
+		oInput.oninput = function() {
+			var value = this.value;
+			// console.log(value);
+			var oScript = document.createElement('script');
+				oScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+ value +'&cb=doJson';
+				document.body.appendChild(oScript);
+				document.body.removeChild(oScript);  //创建完就删除
+		}
+
+		function doJson(data) {
+			var data = data.s;
+			console.log(data);
+			var html = '';
+			if(data.length > 0) {
+				data.forEach(function(ele, index) {
+					html += '<li><a href=https://www.baidu.com/s?wd='+ ele +'>'+ ele +'</a></li>';
+					oUl.innerHTML = html;
+					oUl.style.display = 'block';
+				})
+			}else {
+				oUl.style.display = 'none'
+			}
+		}
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp</title>
+</head>
+<body>
+
+	<script>
+		//解决ajax跨域问题的几种方法
+			/*1.flash
+			2.服务器代理中转 (ajax瀑布流的实现应用)
+			3.jsonp  //src 不受同源策略的限制（img script iframe）
+			4.document.domain (针对基础域名相同的情况下)
+			例如：
+				bj.58.com  在脚本下面写 document.domain = '58.com';
+				tj.58.com  在脚本下面写 document.domain = '58.com';*/
+
+		// 浏览器受 同源策略 的限制 （同协议，同域名，同端口）
+		
+		//jsonp处理
+		var oScript = document.createElement('script');
+			oScript.src = './index.txt?callback=aa';
+			document.body.appendChild(oScript);
+
+		var oScript = document.createElement('script');
+			oScript.src = './index.txt?callback=bb';
+			document.body.appendChild(oScript);
+
+		function aa(data) {
+			console.log(data);
+		}
+		
+		function bb(data) {
+			console.log(data);
+		}
+
+		//php页面
+		aa({'name':'linda'});
+		bb({'age':17});
+	</script>
+</body>
+</html>
